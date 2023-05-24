@@ -5,6 +5,7 @@
         <classes>
             <class name="com.solvd.tests.NewInSubMenuTests"/>
             <class name="com.solvd.tests.DisplayProductInfoTests"/>
+            <class name="com.solvd.tests.CategoryProductsFilterTests"/>
         </classes>
     </test>
 </suite>

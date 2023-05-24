@@ -41,11 +41,15 @@ public class NewInSubCatPage extends AbstractPage {
     @Getter
     private ProductFilters productFilters;
 
+    @FindBy(css = "#categoryProducts")
+    private ExtendedWebElement productsContainer;
+
     @FindBy(xpath = ".//*[@id='categoryProducts']/article[@data-id='%s']")
     private ExtendedWebElement product;
 
     public NewInSubCatPage(WebDriver driver) {
         super(driver);
+        setUiLoadedMarker(productsContainer);
     }
 
     public NewInSubCatPage goToPage(String route) {
