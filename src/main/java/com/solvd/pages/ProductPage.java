@@ -20,13 +20,15 @@ public class ProductPage extends AbstractPage {
     @FindAll({@FindBy(xpath = ".//label[@data-selen='description']"), @FindBy(css = "div[data-testid='description']")})
     private ExtendedWebElement descriptionLabel;
 
-    @FindBy(xpath = ".//label[@data-selen='description']/following-sibling::div//div[contains(@class,'content')]")
+    @FindAll({@FindBy(xpath = ".//label[@data-selen='description']/following-sibling::div//div[contains(@class,'content')]"),
+    @FindBy(css = "div[data-testid ='description']+div div[class^='content_description]'")})
     private ExtendedWebElement descriptionContent;
 
     @FindBy(xpath = ".//label[@data-selen='composition']")
     private ExtendedWebElement materialAndCareLabel;
 
-    @FindBy(xpath = ".//label[@data-selen='composition']/following-sibling::div//div[contains(@class,'content')]")
+    @FindAll({@FindBy(xpath = ".//label[@data-selen='composition']/following-sibling::div//div[contains(@class,'content')]"),
+        @FindBy(css = "div[data-testid ='composition']+div div[class^='content']")})
     private ExtendedWebElement materialAndCareContent;
 
     public ProductPage(WebDriver driver) {
