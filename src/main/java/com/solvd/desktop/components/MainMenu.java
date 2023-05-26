@@ -1,12 +1,15 @@
 package com.solvd.desktop.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.solvd.common.components.MainMenuBase;
+import com.solvd.common.components.NewInSubMenuBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class MainMenu extends AbstractUIObject {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = MainMenuBase.class)
+public class MainMenu extends MainMenuBase {
 
     @FindBy(xpath = ".//span[contains(text(),'new in')]/parent::li")
     private ExtendedWebElement newInCategory;
@@ -15,7 +18,7 @@ public class MainMenu extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public NewInSubMenu expandNewInSubMenu() {
+    public NewInSubMenuBase expandNewInSubMenu() {
         newInCategory.hover();
         return new NewInSubMenu(driver);
     }

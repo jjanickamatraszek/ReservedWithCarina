@@ -1,28 +1,40 @@
 package com.solvd.desktop.pages;
 
-import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.solvd.common.components.CookieDialogBase;
+import com.solvd.common.components.MainMenuBase;
+import com.solvd.common.pages.HomePageBase;
 import com.solvd.desktop.components.CookieDialog;
 import com.solvd.desktop.components.MainMenu;
-import lombok.Getter;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends AbstractPage {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = HomePageBase.class)
+public class HomePage extends HomePageBase {
 
     @FindBy(css = "ul[data-testid='category-list']")
-    @Getter
     private MainMenu mainMenu;
 
     @FindBy(css = "#cookiebanner")
-    @Getter
     private CookieDialog cookieDialog;
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public HomePage goToPage() {
+    @Override
+    public HomePageBase goToPage() {
         open();
         return this;
+    }
+
+    @Override
+    public CookieDialogBase getCookieDialog() {
+        return new CookieDialog(getDriver(), cookieDialog.getRootExtendedElement().getElement());
+    }
+
+    @Override
+    public MainMenuBase getMainMenu() {
+        return new MainMenu(getDriver(), mainMenu.getRootExtendedElement().getElement());
     }
 }
