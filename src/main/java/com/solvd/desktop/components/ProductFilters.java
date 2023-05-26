@@ -1,9 +1,9 @@
-package com.solvd.components;
+package com.solvd.desktop.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.solvd.components.enums.SortOption;
-import com.solvd.pages.NewInSubCatPage;
+import com.solvd.common.components.enums.SortOption;
+import com.solvd.desktop.pages.NewInSubCatPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;

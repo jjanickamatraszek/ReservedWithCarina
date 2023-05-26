@@ -1,4 +1,4 @@
-package com.solvd.components;
+package com.solvd.desktop.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
@@ -6,16 +6,16 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class SideBar extends AbstractUIObject {
+public class CookieDialog extends AbstractUIObject {
 
-    @FindBy(css = "li.active")
-    private ExtendedWebElement activeCategory;
+    @FindBy(css = "#cookiebotDialogOkButton")
+    private ExtendedWebElement okBtn;
 
-    public SideBar(WebDriver driver, SearchContext searchContext) {
+    public CookieDialog(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public String getActiveCategoryTitle() {
-        return activeCategory.getText();
+    public void acceptCookies() {
+        okBtn.clickIfPresent(3);
     }
 }

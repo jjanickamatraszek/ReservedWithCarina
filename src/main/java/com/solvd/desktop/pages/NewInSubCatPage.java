@@ -1,11 +1,11 @@
-package com.solvd.pages;
+package com.solvd.desktop.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.solvd.components.CookieDialog;
-import com.solvd.components.MainMenu;
-import com.solvd.components.ProductFilters;
-import com.solvd.components.SideBar;
+import com.solvd.desktop.components.CookieDialog;
+import com.solvd.desktop.components.MainMenu;
+import com.solvd.desktop.components.ProductFilters;
+import com.solvd.desktop.components.SideBar;
 import com.solvd.model.Product;
 import lombok.Getter;
 import org.openqa.selenium.By;

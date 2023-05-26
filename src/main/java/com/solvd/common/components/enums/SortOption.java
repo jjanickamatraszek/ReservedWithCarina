@@ -1,4 +1,4 @@
-package com.solvd.components.enums;
+package com.solvd.common.components.enums;
 
 import lombok.Getter;
 

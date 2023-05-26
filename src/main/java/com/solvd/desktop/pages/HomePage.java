@@ -1,8 +1,8 @@
-package com.solvd.pages;
+package com.solvd.desktop.pages;
 
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.solvd.components.CookieDialog;
-import com.solvd.components.MainMenu;
+import com.solvd.desktop.components.CookieDialog;
+import com.solvd.desktop.components.MainMenu;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
