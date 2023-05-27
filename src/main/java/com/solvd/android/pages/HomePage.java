@@ -19,18 +19,13 @@ public class HomePage extends HomePageBase {
     @FindBy(css = "#cookiebanner")
     private CookieDialog cookieDialog;
 
-    @FindBy(css = "div[data-qa-id='close-button']")
-    private ExtendedWebElement closeDownloadMobileAppDialogBtn;
-
     public HomePage(WebDriver driver) {
         super(driver);
-        closeDownloadMobileAppDialogBtn.clickIfPresent();
     }
 
     @Override
     public HomePageBase goToPage() {
         open();
-        closeDownloadMobileAppDialogBtn.clickIfPresent();
         return initPage(getDriver(), HomePageBase.class);
     }
 

@@ -38,7 +38,7 @@ public class ProductPage extends ProductPageBase {
     public ProductPage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(mainImg);
-        closeDownloadMobileAppDialogBtn.clickIfPresent();
+        closeDownloadMobileAppDialogBtn.clickIfPresent(3);
     }
 
     @Override

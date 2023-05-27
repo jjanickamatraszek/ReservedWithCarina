@@ -43,7 +43,7 @@ public class NewInSubCatPage extends NewInSubCatPageBase {
     @FindBy(xpath = ".//*[@id='categoryProducts']/article[@data-id='%s']")
     private ExtendedWebElement product;
 
-    private By productsLocator = By.cssSelector("#categoryProducts>article");
+    private final By productsLocator = By.cssSelector("#categoryProducts>article");
 
     @FindBy(css = "div[data-qa-id='close-button']")
     private ExtendedWebElement closeDownloadMobileAppDialogBtn;
@@ -51,7 +51,7 @@ public class NewInSubCatPage extends NewInSubCatPageBase {
     public NewInSubCatPage(WebDriver driver) {
         super(driver);
         waitUntil(ExpectedConditions.visibilityOfAllElementsLocatedBy(productsLocator), 6);
-        closeDownloadMobileAppDialogBtn.clickIfPresent();
+        closeDownloadMobileAppDialogBtn.clickIfPresent(3);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class NewInSubCatPage extends NewInSubCatPageBase {
     @Override
     public ProductPageBase clickOnProduct(Product testDataProduct) {
         product.format(testDataProduct.getDataId()).click();
-        return new ProductPage(driver);
+        return initPage(driver, ProductPageBase.class);
     }
 
     @Override
