@@ -21,7 +21,8 @@ public class ContextTest implements IAbstractTest {
 
         GoogleHomePage googleHomePage = (new ChromeMainPage(getDriver())).goToHomePage();
 
-        Assert.assertTrue(googleHomePage.isGoogleLogoDisplayed());
+        Assert.assertTrue(googleHomePage.isGoogleLogoDisplayed(), "Google logo is not displayed on chrome home " +
+                "page after context switch");
 
         googleHomePage.searchFirstEntryForPhrase(Configuration.get(Configuration.Parameter.URL));
 
@@ -32,6 +33,6 @@ public class ContextTest implements IAbstractTest {
                 .acceptCookies();
         reservedHomePage = initPage(getDriver(), HomePageBase.class);
 
-        Assert.assertTrue(reservedHomePage.isLogoVisible());
+        Assert.assertTrue(reservedHomePage.isLogoVisible(), "Reserved logo is not visible after return to web view");
     }
 }
