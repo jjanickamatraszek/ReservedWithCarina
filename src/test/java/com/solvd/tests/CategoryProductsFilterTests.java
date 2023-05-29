@@ -5,6 +5,7 @@ import com.solvd.common.components.enums.SortOption;
 import com.solvd.common.pages.NewInSubCatPageBase;
 import com.solvd.route.Route;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -14,11 +15,13 @@ import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CategoryProductsFilterTests implements IAbstractTest {
+public class CategoryProductsFilterTests implements IAbstractTest, IMobileUtils {
 
     @Test(description = "Sort products by price asc")
     @MethodOwner(owner = "jjanickamatraszek")
     public void sortProductsByPriceAscTest() {
+//        MobileContextUtils  mobileContextUtils = new MobileContextUtils();
+//        mobileContextUtils.switchMobileContext(com.solvd.MobileContextUtils.View.WEB_BROWSER);
         NewInSubCatPageBase categoryPage = initPage(getDriver(), NewInSubCatPageBase.class);
         categoryPage.goToPage(Route.NEW_IN_WOMEN).getCookieDialog().acceptCookies();
         List<BigDecimal> expectedProductsPricesSorted = categoryPage
@@ -26,6 +29,12 @@ public class CategoryProductsFilterTests implements IAbstractTest {
                 .stream()
                 .sorted(BigDecimal::compareTo)
                 .collect(Collectors.toList());
+
+        System.out.println(expectedProductsPricesSorted);
+
+        System.out.println(getContext());
+
+        categoryPage.getProductFilters();
 
         NewInSubCatPageBase categoryPageSortedByPrice = categoryPage.getProductFilters()
                 .sortBy(SortOption.PRICE_ASC);
