@@ -61,10 +61,10 @@ public class DisplayProductInfoTests implements IAbstractTest {
                 .expandCollapseDescriptionSection();
 
         SoftAssert soft = new SoftAssert();
-        soft.assertFalse(productPageWithCollapsedAllSections.isDescriptionExpanded(), "Desc section is expanded " +
-                "when after click on desc label should have collapsed");
         soft.assertFalse(productPageWithCollapsedAllSections.isMaterialAndCareExpanded(), "Material section is " +
                 "expanded when originally should be collapsed");
+        soft.assertFalse(productPageWithCollapsedAllSections.isDescriptionExpanded(), "Desc section is expanded " +
+                "when after click on desc label should have collapsed");
 
         ProductPageBase productPageWithExpandedMaterialAndCare = productPageWithCollapsedAllSections
                 .expandCollapseMaterialAndCareSection();

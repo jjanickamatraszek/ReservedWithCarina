@@ -4,6 +4,7 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.common.components.enums.SortOption;
 import com.solvd.common.pages.NewInSubCatPageBase;
 import com.solvd.route.Route;
+import com.solvd.utils.TestUtils;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -37,8 +38,10 @@ public class CategoryProductsFilterTests implements IAbstractTest {
         softAssert.assertEquals(actualProductsPricesSorted, expectedProductsPricesSorted,
                 "Products aren't sorted by price asc");
 
-//        softAssert.assertEquals(categoryPageSortedByPrice.getProductFilters().getNumberOfActiveSortFilters(), 1,
-//                "Number of active sort filters is different from expected");
+        if (!TestUtils.isMobile()) {
+            softAssert.assertEquals(categoryPageSortedByPrice.getProductFilters().getNumberOfActiveSortFilters(), 1,
+                    "Number of active sort filters is different from expected");
+        }
 
         softAssert.assertAll();
     }
@@ -71,11 +74,13 @@ public class CategoryProductsFilterTests implements IAbstractTest {
         softAssert.assertEquals(actualProductsTitles, expectedProductsTitles,
                 "Order of products is different than after page launch");
 
-//        int actualNumberOfActiveSortFilters = categoryPageSortedByDefaultOrder
-//                .getProductFilters()
-//                .getNumberOfActiveSortFilters();
-//        softAssert.assertEquals(actualNumberOfActiveSortFilters, 0,
-//                "Number of active sort filters is displayed when should be removed");
+        if (!TestUtils.isMobile()) {
+        int actualNumberOfActiveSortFilters = categoryPageSortedByDefaultOrder
+                .getProductFilters()
+                .getNumberOfActiveSortFilters();
+        softAssert.assertEquals(actualNumberOfActiveSortFilters, 0,
+                "Number of active sort filters is displayed when should be removed");
+        }
 
         softAssert.assertAll();
     }
@@ -117,11 +122,13 @@ public class CategoryProductsFilterTests implements IAbstractTest {
         soft.assertEquals(numberOfPricesWithValueOverPriceTo, 0,
                 "Products with price greater than upper price limit were displayed");
 
-//        int actualNumberOfActivePriceFilters = categoryPageFiltered
-//                .getProductFilters()
-//                .getNumberOfActivePriceFilters();
-//        soft.assertEquals(actualNumberOfActivePriceFilters, 2,
-//                "Number of active price filters is different from expected");
+        if (!TestUtils.isMobile()) {
+        int actualNumberOfActivePriceFilters = categoryPageFiltered
+                .getProductFilters()
+                .getNumberOfActivePriceFilters();
+        soft.assertEquals(actualNumberOfActivePriceFilters, 2,
+                "Number of active price filters is different from expected");
+        }
 
         soft.assertAll();
     }

@@ -5,6 +5,7 @@ import com.solvd.common.components.NewInSubMenuBase;
 import com.solvd.common.pages.HomePageBase;
 import com.solvd.common.pages.NewInSubCatPageBase;
 import com.solvd.tests.dataProviders.DataProviders;
+import com.solvd.utils.TestUtils;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -28,7 +29,9 @@ public class NewInSubMenuTests implements IAbstractTest {
         soft.assertEquals(newInSubMenu.getNumberOfSubcategories(), expectedNumberOfSubcategories, "Number of subcategories" +
                 "is different than expected ");
 
-//        soft.assertEquals(newInSubMenu.getNumberOfSubcategoriesWithoutImg(), 0, "Some subcategories don't have an image");
+        if (!TestUtils.isMobile()) {
+            soft.assertEquals(newInSubMenu.getNumberOfSubcategoriesWithoutImg(), 0, "Some subcategories don't have an image");
+        }
 
         soft.assertEquals(newInSubMenu.getNumberOfSubcategoriesWithoutTitle(), 0, "Some subcategories don't have a title");
         soft.assertAll();
@@ -52,8 +55,10 @@ public class NewInSubMenuTests implements IAbstractTest {
         soft.assertEquals(newInSubCatPage.getTitle(), subcategory, "Title on 'New In' subcategory page is different " +
                 "than subcategory chosen from menu");
 
-//        soft.assertEquals(newInSubCatPage.getSideBar().getActiveCategoryTitle(), subcategory, "Active category in " +
-//                "sidebar is different from subcategory chosen from menu");
+        if (!TestUtils.isMobile()) {
+            soft.assertEquals(newInSubCatPage.getSideBar().getActiveCategoryTitle(), subcategory, "Active category in " +
+                    "sidebar is different from subcategory chosen from menu");
+        }
 
         soft.assertAll();
     }
