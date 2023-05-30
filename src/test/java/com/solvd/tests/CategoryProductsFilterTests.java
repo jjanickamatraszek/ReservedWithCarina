@@ -4,6 +4,7 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.common.components.enums.SortOption;
 import com.solvd.common.pages.NewInSubCatPageBase;
 import com.solvd.route.Route;
+import com.solvd.utils.MobileContextUtils;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.testng.Assert;
@@ -20,8 +21,8 @@ public class CategoryProductsFilterTests implements IAbstractTest, IMobileUtils 
     @Test(description = "Sort products by price asc")
     @MethodOwner(owner = "jjanickamatraszek")
     public void sortProductsByPriceAscTest() {
-//        MobileContextUtils  mobileContextUtils = new MobileContextUtils();
-//        mobileContextUtils.switchMobileContext(com.solvd.MobileContextUtils.View.WEB_BROWSER);
+//        MobileContextUtils mobileContextUtils = new MobileContextUtils();
+//        mobileContextUtils.switchMobileContext(MobileContextUtils.View.WEB_BROWSER);
         NewInSubCatPageBase categoryPage = initPage(getDriver(), NewInSubCatPageBase.class);
         categoryPage.goToPage(Route.NEW_IN_WOMEN).getCookieDialog().acceptCookies();
         List<BigDecimal> expectedProductsPricesSorted = categoryPage

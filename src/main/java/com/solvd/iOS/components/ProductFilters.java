@@ -35,7 +35,6 @@ public class ProductFilters extends ProductFiltersBase {
     private ExtendedWebElement filterBtn;
 
     public ProductFilters(WebDriver driver) {
-      //  mobileContextUtils.switchMobileContext(com.solvd.MobileContextUtils.View.WEB_BROWSER);
         super(driver);
         setUiLoadedMarker(priceFilterLabel);
     }

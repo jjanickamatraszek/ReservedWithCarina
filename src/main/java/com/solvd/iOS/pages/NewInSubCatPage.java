@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = NewInSubCatPageBase.class)
 public class NewInSubCatPage extends NewInSubCatPageBase {
-
     private static final String THIS_METHOD_IS_DEFINED_ONLY_FOR_DESKTOP = "This method is not applicable for browsers on mobiles";
 
     @FindBy(css = "h1 span")
