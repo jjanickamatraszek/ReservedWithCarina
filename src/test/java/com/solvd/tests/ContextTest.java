@@ -26,7 +26,7 @@ public class ContextTest implements IAbstractTest {
 
         googleHomePage.searchFirstEntryForPhrase(Configuration.get(Configuration.Parameter.URL));
 
-        contextHelper.switchMobileContext(MobileContextUtils.View.WEB_VIEW);
+        contextHelper.switchMobileContext(MobileContextUtils.View.CHROME);
 
         initPage(getDriver(), HomePageBase.class)
                 .getCookieDialog()
