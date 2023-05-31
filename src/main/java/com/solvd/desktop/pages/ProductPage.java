@@ -1,12 +1,14 @@
-package com.solvd.pages;
+package com.solvd.desktop.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.solvd.common.pages.ProductPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductPage extends AbstractPage {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageBase.class)
+public class ProductPage extends ProductPageBase {
 
     @FindAll({@FindBy(css = "h1.product-name"), @FindBy(css = "h1[data-testid='product-name']")})
     private ExtendedWebElement titleLabel;
@@ -21,14 +23,14 @@ public class ProductPage extends AbstractPage {
     private ExtendedWebElement descriptionLabel;
 
     @FindAll({@FindBy(xpath = ".//label[@data-selen='description']/following-sibling::div//div[contains(@class,'content')]"),
-    @FindBy(css = "div[data-testid ='description']+div div[class^='content_description]'")})
+            @FindBy(css = "div[data-testid ='description']+div div[class^='content_description]'")})
     private ExtendedWebElement descriptionContent;
 
     @FindBy(xpath = ".//label[@data-selen='composition']")
     private ExtendedWebElement materialAndCareLabel;
 
     @FindAll({@FindBy(xpath = ".//label[@data-selen='composition']/following-sibling::div//div[contains(@class,'content')]"),
-        @FindBy(css = "div[data-testid ='composition']+div div[class^='content']")})
+            @FindBy(css = "div[data-testid ='composition']+div div[class^='content']")})
     private ExtendedWebElement materialAndCareContent;
 
     public ProductPage(WebDriver driver) {
@@ -63,15 +65,15 @@ public class ProductPage extends AbstractPage {
         return materialAndCareContent.getText();
     }
 
-    public ProductPage expandCollapseMaterialAndCareSection() {
+    public ProductPageBase expandCollapseMaterialAndCareSection() {
         return expandCollapseSection(materialAndCareLabel);
     }
 
-    public ProductPage expandCollapseDescriptionSection() {
+    public ProductPageBase expandCollapseDescriptionSection() {
         return expandCollapseSection(descriptionLabel);
     }
 
-    private ProductPage expandCollapseSection(ExtendedWebElement label) {
+    private ProductPageBase expandCollapseSection(ExtendedWebElement label) {
         label.click();
         return this;
     }
