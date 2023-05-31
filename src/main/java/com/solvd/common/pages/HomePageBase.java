@@ -16,4 +16,6 @@ public abstract class HomePageBase extends AbstractPage {
     public abstract CookieDialogBase getCookieDialog();
 
     public abstract MainMenuBase getMainMenu();
+
+    public abstract boolean isLogoVisible();
 }

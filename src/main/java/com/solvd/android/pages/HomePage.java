@@ -19,6 +19,9 @@ public class HomePage extends HomePageBase {
     @FindBy(css = "#cookiebanner")
     private CookieDialog cookieDialog;
 
+    @FindBy(css = "[data-testid='brand-logo-button']")
+    private ExtendedWebElement logo;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -38,5 +41,9 @@ public class HomePage extends HomePageBase {
     public MainMenuBase getMainMenu() {
         mainMenuBtn.click();
         return new MainMenu(getDriver());
+    }
+
+    public boolean isLogoVisible(){
+        return logo.isVisible();
     }
 }

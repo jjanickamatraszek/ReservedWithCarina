@@ -1,5 +1,6 @@
 package com.solvd.desktop.pages;
 
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.common.components.CookieDialogBase;
 import com.solvd.common.components.MainMenuBase;
 import com.solvd.common.pages.HomePageBase;
@@ -17,6 +18,9 @@ public class HomePage extends HomePageBase {
 
     @FindBy(css = "#cookiebanner")
     private CookieDialog cookieDialog;
+
+    @FindBy(css = "[data-testid='brand-logo-button']")
+    private ExtendedWebElement logo;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -36,5 +40,10 @@ public class HomePage extends HomePageBase {
     @Override
     public MainMenuBase getMainMenu() {
         return new MainMenu(getDriver(), mainMenu.getRootExtendedElement().getElement());
+    }
+
+    @Override
+    public boolean isLogoVisible() {
+        return logo.isVisible();
     }
 }
