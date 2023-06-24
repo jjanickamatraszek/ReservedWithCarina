@@ -7,6 +7,8 @@
     <parameter name="jenkinsEnvironments" value="DEMO"/>
     <parameter name="jenkinsEmail" value="jjanickamatraszek@solvd.com"/>
 
+    <parameter name="capabilities" value="provider=selenium"/>
+
     <parameter name="jenkinsRegressionPipeline" value="web_regression, full_regression"/>
 
     <parameter name="jenkinsRegressionMatrix_full_regression" value="browser:chrome"/>
