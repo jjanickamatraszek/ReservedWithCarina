@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite with test for sub menu">
+    <parameter name="suiteOwner" value="JJM"/>
+    <parameter name="jenkinsJobName" value="Tests-for-sub-menu"/>
+    <parameter name="jenkinsJobType" value="web"/>
+    <parameter name="jenkinsEnvironments" value="DEMO"/>
+    <parameter name="jenkinsEmail" value="jjanickamatraszek@solvd.com"/>
+
+    <parameter name="jenkinsRegressionPipeline" value="web_regression, full_regression"/>
+
+    <parameter name="jenkinsRegressionMatrix_full_regression" value="browser:chrome"/>
+    <parameter name="jenkinsJobExecutionOrder" value="1"/>
+    <parameter name="jenkinsJobExecutionMode" value="continue"/>
+
+    <!--    <parameter name="choiceParam::locale::supported locales in example" value="en_US,es_ES,de_DE,zh_CN,ru_RU,hu_HU,ja_JP" />-->
+    <parameter name="jenkinsAutoScreenshot" value="true"/>
+    <test name="New In Sub Menu Test">
+        <classes>
+            <class name="com.solvd.tests.NewInSubMenuTests"/>
+        </classes>
+    </test>
+    <test name="Display Product Test">
+        <classes>
+            <class name="com.solvd.tests.DisplayProductInfoTests"/>
+        </classes>
+    </test>
+</suite>
