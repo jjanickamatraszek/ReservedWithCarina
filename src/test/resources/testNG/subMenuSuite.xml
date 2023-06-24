@@ -13,6 +13,8 @@
     <parameter name="jenkinsJobExecutionOrder" value="1"/>
     <parameter name="jenkinsJobExecutionMode" value="continue"/>
 
+    <parameter name="jenkinsNodeLabel" value="maven"/>
+
     <!--    <parameter name="choiceParam::locale::supported locales in example" value="en_US,es_ES,de_DE,zh_CN,ru_RU,hu_HU,ja_JP" />-->
     <parameter name="jenkinsAutoScreenshot" value="true"/>
     <test name="New In Sub Menu Test">
