@@ -94,7 +94,7 @@ public class CategoryProductsFilterTests implements IAbstractTest {
                 .getProductsPricesAsNumbers()
                 .stream()
                 .sorted(BigDecimal::compareTo)
-                .toList();
+                .collect(Collectors.toList());
 
         int amountOfProductBeforeFiltering = productPricesSortedAsc.size();
         BigDecimal priceFrom = productPricesSortedAsc.get(1).setScale(0, RoundingMode.CEILING);
