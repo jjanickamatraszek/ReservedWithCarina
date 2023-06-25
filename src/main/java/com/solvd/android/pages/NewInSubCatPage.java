@@ -1,6 +1,6 @@
 package com.solvd.android.pages;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.android.components.CookieDialog;
 import com.solvd.android.components.MainMenu;
 import com.solvd.android.components.ProductFilters;

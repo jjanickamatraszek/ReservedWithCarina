@@ -1,6 +1,6 @@
 package com.solvd.common.components;
 
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import com.solvd.common.pages.NewInSubCatPageBase;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;

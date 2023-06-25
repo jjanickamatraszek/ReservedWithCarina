@@ -1,6 +1,6 @@
 package com.solvd.android.components;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.android.pages.NewInSubCatPage;
 import com.solvd.common.components.ProductFiltersBase;
 import com.solvd.common.components.enums.SortOption;

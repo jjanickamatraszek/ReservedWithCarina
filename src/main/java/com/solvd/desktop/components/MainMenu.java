@@ -1,6 +1,6 @@
 package com.solvd.desktop.components;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.common.components.MainMenuBase;
 import com.solvd.common.components.NewInSubMenuBase;
 import com.zebrunner.carina.utils.factory.DeviceType;

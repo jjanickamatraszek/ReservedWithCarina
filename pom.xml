@@ -12,7 +12,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <carina-core.version>8.0.7</carina-core.version>
+        <carina-core.version>8.0.11</carina-core.version>
         <log4j-slf4j2-impl.version>2.20.0</log4j-slf4j2-impl.version>
         <log4j-core.version>2.20.0</log4j-core.version>
         <log4j-api.version>2.20.0</log4j-api.version>

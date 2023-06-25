@@ -1,6 +1,6 @@
 package com.solvd.common.pages;
 
-import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import com.solvd.common.components.CookieDialogBase;
 import com.solvd.common.components.MainMenuBase;
 import org.openqa.selenium.WebDriver;

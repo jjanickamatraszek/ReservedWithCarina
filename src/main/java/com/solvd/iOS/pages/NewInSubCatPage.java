@@ -1,6 +1,6 @@
 package com.solvd.iOS.pages;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.common.components.CookieDialogBase;
 import com.solvd.common.components.MainMenuBase;
 import com.solvd.common.components.ProductFiltersBase;

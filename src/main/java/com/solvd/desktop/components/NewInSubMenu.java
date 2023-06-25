@@ -1,6 +1,6 @@
 package com.solvd.desktop.components;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.common.components.NewInSubMenuBase;
 import com.solvd.common.pages.NewInSubCatPageBase;
 import com.solvd.desktop.pages.NewInSubCatPage;
