@@ -80,7 +80,7 @@
                     <configuration>
                         <suiteXmlFiles>
                             <suiteXmlFile>
-                                src/test/resources/testNG/testNG.xml
+                                src/test/resources/testNG/${suite}.xml
                             </suiteXmlFile>
                         </suiteXmlFiles>
                     </configuration>
