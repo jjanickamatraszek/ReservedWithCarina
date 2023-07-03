@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite with test for sub menu">
-    <parameter name="suiteOwner" value="JJM"/>
+    <parameter name="suiteOwner" value="jjanickamatraszek"/>
     <parameter name="jenkinsJobName" value="Tests-for-sub-menu"/>
     <parameter name="jenkinsJobType" value="web"/>
     <parameter name="jenkinsEnvironments" value="DEMO"/>
