@@ -6,15 +6,24 @@ import com.solvd.common.pages.HomePageBase;
 import com.solvd.common.pages.NewInSubCatPageBase;
 import com.solvd.tests.dataProviders.DataProviders;
 import com.solvd.utils.TestUtils;
+import com.zebrunner.agent.core.annotation.TestRailCaseId;
+import com.zebrunner.agent.core.registrar.TestRail;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class NewInSubMenuTests implements IAbstractTest {
 
+    @BeforeSuite
+    public void setUp() {
+        TestRail.setSuiteId("S194");
+    }
+
     @Test(description = "Display submenu of 'New In' menu category")
     @MethodOwner(owner = "jjanickamatraszek")
+    @TestRailCaseId("C3576")
     public void displaySubMenuTest() {
         int expectedNumberOfSubcategories = 4;
 
@@ -40,6 +49,7 @@ public class NewInSubMenuTests implements IAbstractTest {
     @Test(description = "Go to subcategory page",
             dataProvider = "New In submenu categories", dataProviderClass = DataProviders.class)
     @MethodOwner(owner = "jjanickamatraszek")
+    @TestRailCaseId("C3577")
     public void goToSubcategoryPageTest(String subcategory) {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.goToPage().getCookieDialog().acceptCookies();

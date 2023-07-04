@@ -5,6 +5,7 @@ import com.solvd.common.pages.HomePageBase;
 import com.solvd.common.pages.ProductPageBase;
 import com.solvd.model.Product;
 import com.solvd.propertiesReader.TestDataReader;
+import com.zebrunner.agent.core.annotation.TestRailCaseId;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -22,6 +23,7 @@ public class DisplayProductInfoTests implements IAbstractTest {
 
     @Test(description = "Display product page")
     @MethodOwner(owner = "jjanickamatraszek")
+    @TestRailCaseId("C3578")
     public void displayProductInfoTest() {
         String expectedProductTitle = product.getTitle();
 
@@ -49,6 +51,7 @@ public class DisplayProductInfoTests implements IAbstractTest {
 
     @Test(description = "Expand and collapse description section")
     @MethodOwner(owner = "jjanickamatraszek")
+    @TestRailCaseId("C3579")
     public void expandAndCollapseDescTest() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.goToPage().getCookieDialog().acceptCookies();

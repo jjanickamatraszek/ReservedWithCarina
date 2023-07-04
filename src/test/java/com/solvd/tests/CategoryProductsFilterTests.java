@@ -5,6 +5,7 @@ import com.solvd.common.components.enums.SortOption;
 import com.solvd.common.pages.NewInSubCatPageBase;
 import com.solvd.route.Route;
 import com.solvd.utils.TestUtils;
+import com.zebrunner.agent.core.annotation.TestRailCaseId;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,6 +20,7 @@ public class CategoryProductsFilterTests implements IAbstractTest {
 
     @Test(description = "Sort products by price asc")
     @MethodOwner(owner = "jjanickamatraszek")
+    @TestRailCaseId("C3580")
     public void sortProductsByPriceAscTest() {
         NewInSubCatPageBase categoryPage = initPage(getDriver(), NewInSubCatPageBase.class);
         categoryPage.goToPage(Route.NEW_IN_WOMEN).getCookieDialog().acceptCookies();
@@ -48,6 +50,7 @@ public class CategoryProductsFilterTests implements IAbstractTest {
 
     @Test(description = "Sort products by default order")
     @MethodOwner(owner = "jjanickamatraszek")
+    @TestRailCaseId("C3581")
     public void sortProductsByDefaultOrderTest() {
         NewInSubCatPageBase categoryPage = initPage(getDriver(), NewInSubCatPageBase.class);
         categoryPage.goToPage(Route.NEW_IN_WOMEN).getCookieDialog().acceptCookies();
@@ -75,11 +78,11 @@ public class CategoryProductsFilterTests implements IAbstractTest {
                 "Order of products is different than after page launch");
 
         if (!TestUtils.isMobile()) {
-        int actualNumberOfActiveSortFilters = categoryPageSortedByDefaultOrder
-                .getProductFilters()
-                .getNumberOfActiveSortFilters();
-        softAssert.assertEquals(actualNumberOfActiveSortFilters, 0,
-                "Number of active sort filters is displayed when should be removed");
+            int actualNumberOfActiveSortFilters = categoryPageSortedByDefaultOrder
+                    .getProductFilters()
+                    .getNumberOfActiveSortFilters();
+            softAssert.assertEquals(actualNumberOfActiveSortFilters, 0,
+                    "Number of active sort filters is displayed when should be removed");
         }
 
         softAssert.assertAll();
@@ -87,6 +90,7 @@ public class CategoryProductsFilterTests implements IAbstractTest {
 
     @Test(description = "Filter products by price range")
     @MethodOwner(owner = "jjanickamatraszek")
+    @TestRailCaseId("C3582")
     public void filterProductsByPriceRangeTest() {
         NewInSubCatPageBase categoryPage = initPage(getDriver(), NewInSubCatPageBase.class);
         categoryPage.goToPage(Route.NEW_IN_WOMEN).getCookieDialog().acceptCookies();
@@ -123,11 +127,11 @@ public class CategoryProductsFilterTests implements IAbstractTest {
                 "Products with price greater than upper price limit were displayed");
 
         if (!TestUtils.isMobile()) {
-        int actualNumberOfActivePriceFilters = categoryPageFiltered
-                .getProductFilters()
-                .getNumberOfActivePriceFilters();
-        soft.assertEquals(actualNumberOfActivePriceFilters, 2,
-                "Number of active price filters is different from expected");
+            int actualNumberOfActivePriceFilters = categoryPageFiltered
+                    .getProductFilters()
+                    .getNumberOfActivePriceFilters();
+            soft.assertEquals(actualNumberOfActivePriceFilters, 2,
+                    "Number of active price filters is different from expected");
         }
 
         soft.assertAll();
