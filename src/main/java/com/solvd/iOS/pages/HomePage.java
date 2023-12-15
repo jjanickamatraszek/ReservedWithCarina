@@ -1,20 +1,20 @@
-package com.solvd.desktop.pages;
+package com.solvd.iOS.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.common.components.CookieDialogBase;
 import com.solvd.common.components.MainMenuBase;
 import com.solvd.common.pages.HomePageBase;
-import com.solvd.desktop.components.CookieDialog;
-import com.solvd.desktop.components.MainMenu;
+import com.solvd.iOS.components.CookieDialog;
+import com.solvd.iOS.components.MainMenu;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = HomePageBase.class)
-public class HomePage extends HomePageBase {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = HomePageBase.class)
+public class HomePage extends HomePageBase{
 
-    @FindBy(css = "ul[data-testid='category-list']")
-    private MainMenu mainMenu;
+    @FindBy(xpath = ".//button[starts-with(@class,'hamburger')]")
+    private ExtendedWebElement mainMenuBtn;
 
     @FindBy(css = "#cookiebanner")
     private CookieDialog cookieDialog;
@@ -29,7 +29,7 @@ public class HomePage extends HomePageBase {
     @Override
     public HomePageBase goToPage() {
         open();
-        return this;
+        return initPage(getDriver(), HomePageBase.class);
     }
 
     @Override
@@ -39,11 +39,11 @@ public class HomePage extends HomePageBase {
 
     @Override
     public MainMenuBase getMainMenu() {
-        return new MainMenu(getDriver(), mainMenu.getRootExtendedElement().getElement());
+        mainMenuBtn.click();
+        return new MainMenu(getDriver());
     }
 
-    @Override
-    public boolean isLogoVisible() {
+    public boolean isLogoVisible(){
         return logo.isVisible();
     }
 }
