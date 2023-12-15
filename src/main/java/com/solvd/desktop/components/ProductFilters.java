@@ -1,16 +1,19 @@
-package com.solvd.components;
+package com.solvd.desktop.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.solvd.components.enums.SortOption;
-import com.solvd.pages.NewInSubCatPage;
+import com.solvd.common.components.ProductFiltersBase;
+import com.solvd.common.components.enums.SortOption;
+import com.solvd.common.pages.NewInSubCatPageBase;
+import com.solvd.desktop.pages.NewInSubCatPage;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.math.BigDecimal;
 
-public class ProductFilters extends AbstractUIObject {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductFiltersBase.class)
+public class ProductFilters extends ProductFiltersBase {
 
     @FindBy(xpath = ".//label[text()='Sort by']/parent::div")
     private ExtendedWebElement sortByFilterLabel;
@@ -37,7 +40,7 @@ public class ProductFilters extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public NewInSubCatPage sortBy(SortOption sortOption) {
+    public NewInSubCatPageBase sortBy(SortOption sortOption) {
         sortByFilterLabel.click();
         sortOptionLabel.format(sortOption.getValue()).click();
         sortBtn.click();
@@ -48,7 +51,7 @@ public class ProductFilters extends AbstractUIObject {
         return getNumberOfActiveFilters(sortByFilterLabel);
     }
 
-    public NewInSubCatPage filterByPriceRange(BigDecimal priceFrom, BigDecimal priceTo) {
+    public NewInSubCatPageBase filterByPriceRange(BigDecimal priceFrom, BigDecimal priceTo) {
         priceFilterLabel.click();
         priceFromTextField.type(String.valueOf(priceFrom));
         priceToTextField.type(String.valueOf(priceTo));

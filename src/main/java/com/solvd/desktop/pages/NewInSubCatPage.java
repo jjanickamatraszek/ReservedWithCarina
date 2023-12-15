@@ -1,12 +1,18 @@
-package com.solvd.pages;
+package com.solvd.desktop.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.solvd.components.CookieDialog;
-import com.solvd.components.MainMenu;
-import com.solvd.components.ProductFilters;
-import com.solvd.components.SideBar;
+import com.solvd.common.components.CookieDialogBase;
+import com.solvd.common.components.MainMenuBase;
+import com.solvd.common.pages.HomePageBase;
+import com.solvd.common.pages.NewInSubCatPageBase;
+import com.solvd.common.pages.ProductPageBase;
+import com.solvd.desktop.components.CookieDialog;
+import com.solvd.desktop.components.MainMenu;
+import com.solvd.desktop.components.ProductFilters;
+import com.solvd.desktop.components.SideBar;
 import com.solvd.model.Product;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +23,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NewInSubCatPage extends AbstractPage {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = NewInSubCatPageBase.class)
+public class NewInSubCatPage extends NewInSubCatPageBase {
 
     @FindBy(css = "h1[class*='category-title']")
     private ExtendedWebElement titleLabel;
@@ -27,14 +34,12 @@ public class NewInSubCatPage extends AbstractPage {
     private SideBar sideBar;
 
     @FindBy(css = "ul[data-testid='category-list']")
-    @Getter
     private MainMenu mainMenu;
 
     @FindBy(css = "#categoryProducts>article")
     private List<ExtendedWebElement> products;
 
     @FindBy(css = "#cookiebanner")
-    @Getter
     private CookieDialog cookieDialog;
 
     @FindBy(css = "#categoryFilters")
@@ -52,20 +57,23 @@ public class NewInSubCatPage extends AbstractPage {
         setUiLoadedMarker(productsContainer);
     }
 
-    public NewInSubCatPage goToPage(String route) {
+    public NewInSubCatPageBase goToPage(String route) {
         openURL(route);
         return this;
     }
 
+    @Override
     public String getTitle() {
         return titleLabel.getText();
     }
 
-    public ProductPage clickOnProduct(Product testDataProduct) {
+    @Override
+    public ProductPageBase clickOnProduct(Product testDataProduct) {
         product.format(testDataProduct.getDataId()).click();
-        return new ProductPage(driver);
+        return initPage(driver, ProductPageBase.class);
     }
 
+    @Override
     public List<BigDecimal> getProductsPricesAsNumbers() {
         waitUntil(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".jDLjGg")), 2);
         return products
@@ -74,6 +82,7 @@ public class NewInSubCatPage extends AbstractPage {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<String> getProductsTitles() {
         waitUntil(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".jDLjGg")), 2);
         return products
@@ -82,7 +91,18 @@ public class NewInSubCatPage extends AbstractPage {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public boolean areProductsLoaded() {
         return waitUntil(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".jDLjGg")), 2);
+    }
+
+    @Override
+    public CookieDialogBase getCookieDialog() {
+        return new CookieDialog(getDriver(), cookieDialog.getRootExtendedElement().getElement());
+    }
+
+    @Override
+    public MainMenuBase getMainMenu() {
+        return new MainMenu(getDriver(), mainMenu.getRootExtendedElement().getElement());
     }
 }

@@ -1,12 +1,14 @@
-package com.solvd.components;
+package com.solvd.iOS.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.solvd.common.components.CookieDialogBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class CookieDialog extends AbstractUIObject {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CookieDialogBase.class)
+public class CookieDialog extends CookieDialogBase {
 
     @FindBy(css = "#cookiebotDialogOkButton")
     private ExtendedWebElement okBtn;
@@ -15,6 +17,7 @@ public class CookieDialog extends AbstractUIObject {
         super(driver, searchContext);
     }
 
+    @Override
     public void acceptCookies() {
         okBtn.clickIfPresent(3);
     }

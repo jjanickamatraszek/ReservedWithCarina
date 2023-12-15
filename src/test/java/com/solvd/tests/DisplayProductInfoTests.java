@@ -1,9 +1,9 @@
 package com.solvd.tests;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.solvd.common.pages.HomePageBase;
+import com.solvd.common.pages.ProductPageBase;
 import com.solvd.model.Product;
-import com.solvd.pages.HomePage;
-import com.solvd.pages.ProductPage;
 import com.solvd.propertiesReader.TestDataReader;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.annotations.BeforeClass;
@@ -25,9 +25,9 @@ public class DisplayProductInfoTests implements IAbstractTest {
     public void displayProductInfoTest() {
         String expectedProductTitle = product.getTitle();
 
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.goToPage().getCookieDialog().acceptCookies();
-        ProductPage productPage = homePage.getMainMenu()
+        ProductPageBase productPage = homePage.getMainMenu()
                 .expandNewInSubMenu()
                 .clickOnSubcategory(newInCategory)
                 .clickOnProduct(product);
@@ -42,6 +42,7 @@ public class DisplayProductInfoTests implements IAbstractTest {
 
         productPage.expandCollapseMaterialAndCareSection();
 
+        soft.assertTrue(productPage.isMaterialAndCareExpanded(), "Product material and care section is collapsed after click on label");
         soft.assertFalse(productPage.getMaterialAndCareText().isBlank(), "Product material and care section is blank when expanded");
         soft.assertAll();
     }
@@ -49,23 +50,23 @@ public class DisplayProductInfoTests implements IAbstractTest {
     @Test(description = "Expand and collapse description section")
     @MethodOwner(owner = "jjanickamatraszek")
     public void expandAndCollapseDescTest() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.goToPage().getCookieDialog().acceptCookies();
-        ProductPage productPage = homePage.getMainMenu()
+        ProductPageBase productPage = homePage.getMainMenu()
                 .expandNewInSubMenu()
                 .clickOnSubcategory(newInCategory)
                 .clickOnProduct(product);
 
-        ProductPage productPageWithCollapsedAllSections = productPage
+        ProductPageBase productPageWithCollapsedAllSections = productPage
                 .expandCollapseDescriptionSection();
 
         SoftAssert soft = new SoftAssert();
-        soft.assertFalse(productPageWithCollapsedAllSections.isDescriptionExpanded(), "Desc section is expanded " +
-                "when after click on desc label should have collapsed");
         soft.assertFalse(productPageWithCollapsedAllSections.isMaterialAndCareExpanded(), "Material section is " +
                 "expanded when originally should be collapsed");
+        soft.assertFalse(productPageWithCollapsedAllSections.isDescriptionExpanded(), "Desc section is expanded " +
+                "when after click on desc label should have collapsed");
 
-        ProductPage productPageWithExpandedMaterialAndCare = productPageWithCollapsedAllSections
+        ProductPageBase productPageWithExpandedMaterialAndCare = productPageWithCollapsedAllSections
                 .expandCollapseMaterialAndCareSection();
 
         soft.assertFalse(productPageWithExpandedMaterialAndCare.isDescriptionExpanded(), "Desc section is expanded" +
@@ -73,7 +74,7 @@ public class DisplayProductInfoTests implements IAbstractTest {
         soft.assertTrue(productPageWithExpandedMaterialAndCare.isMaterialAndCareExpanded(), "Material section is " +
                 "collapsed when after click on material label should have been expanded");
 
-        ProductPage productPageWithExpandedDesc = productPageWithExpandedMaterialAndCare
+        ProductPageBase productPageWithExpandedDesc = productPageWithExpandedMaterialAndCare
                 .expandCollapseDescriptionSection();
 
         soft.assertFalse(productPageWithExpandedDesc.isMaterialAndCareExpanded(), "Material section stayed expanded" +

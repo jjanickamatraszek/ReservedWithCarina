@@ -1,15 +1,18 @@
-package com.solvd.components;
+package com.solvd.desktop.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.solvd.pages.NewInSubCatPage;
+import com.solvd.common.components.NewInSubMenuBase;
+import com.solvd.common.pages.NewInSubCatPageBase;
+import com.solvd.desktop.pages.NewInSubCatPage;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class NewInSubMenu extends AbstractUIObject {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = NewInSubMenuBase.class)
+public class NewInSubMenu extends NewInSubMenuBase {
 
     @FindBy(css = "ul[class*='inner-list']")
     private ExtendedWebElement submenuContainer;
@@ -49,7 +52,7 @@ public class NewInSubMenu extends AbstractUIObject {
                 .count();
     }
 
-    public NewInSubCatPage clickOnSubcategory(String title) {
+    public NewInSubCatPageBase clickOnSubcategory(String title) {
         subcategory.format(title.toUpperCase()).click();
         return new NewInSubCatPage(driver);
     }
