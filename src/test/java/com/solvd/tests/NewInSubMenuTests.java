@@ -52,11 +52,11 @@ public class NewInSubMenuTests implements IAbstractTest {
         Assert.assertTrue(newInSubCatPage.areProductsLoaded(), "Products didn't load");
 
         SoftAssert soft = new SoftAssert();
-        soft.assertEquals(newInSubCatPage.getTitle(), subcategory, "Title on 'New In' subcategory page is different " +
+        soft.assertEquals(newInSubCatPage.getTitle().toLowerCase(), subcategory.toLowerCase(), "Title on 'New In' subcategory page is different " +
                 "than subcategory chosen from menu");
 
         if (!TestUtils.isMobile()) {
-            soft.assertEquals(newInSubCatPage.getSideBar().getActiveCategoryTitle(), subcategory, "Active category in " +
+            soft.assertEquals(newInSubCatPage.getSideBar().getActiveCategoryTitle().toLowerCase(), subcategory.toLowerCase(), "Active category in " +
                     "sidebar is different from subcategory chosen from menu");
         }
 

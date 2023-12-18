@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = NewInSubCatPageBase.class)
 public class NewInSubCatPage extends NewInSubCatPageBase {
 
-    @FindBy(css = "h1[class*='category-title']")
+    @FindBy(css = "main h1")
     private ExtendedWebElement titleLabel;
 
     @FindBy(css = "div[class*='sidebar__StyledSidebar']")
@@ -84,7 +84,7 @@ public class NewInSubCatPage extends NewInSubCatPageBase {
 
     @Override
     public List<String> getProductsTitles() {
-        waitUntil(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".jDLjGg")), 2);
+        waitUntil(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".es-product-name")), 2);
         return products
                 .stream()
                 .map(el -> el.findExtendedWebElement(By.cssSelector(".es-product-name")).getText())

@@ -27,10 +27,10 @@ public class ProductFilters extends ProductFiltersBase {
     @FindBy(xpath = ".//label[text()='Price']/parent::div")
     private ExtendedWebElement priceFilterLabel;
 
-    @FindBy(css = "#priceFrom")
+    @FindBy(css = "#pricespriceFrom")
     private ExtendedWebElement priceFromTextField;
 
-    @FindBy(css = "#priceTo")
+    @FindBy(css = "#pricespriceTo")
     private ExtendedWebElement priceToTextField;
 
     @FindBy(xpath = ".//label[text()='Price']/parent::div//button[@type='submit']")
