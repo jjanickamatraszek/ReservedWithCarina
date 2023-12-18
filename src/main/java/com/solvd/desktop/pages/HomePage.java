@@ -33,7 +33,7 @@ public class HomePage extends HomePageBase {
     }
 
     @Override
-    public CookieDialogBase getCookieDialog() {
+    public CookieDialogBase   getCookieDialog() {
         return new CookieDialog(getDriver(), cookieDialog.getRootExtendedElement().getElement());
     }
 
