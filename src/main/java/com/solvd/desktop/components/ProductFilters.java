@@ -34,7 +34,8 @@ public class ProductFilters extends ProductFiltersBase {
     private ExtendedWebElement priceToTextField;
 
     @FindBy(xpath = ".//label[text()='Price']/parent::div//button[@type='submit']")
-    private ExtendedWebElement priceFilterBtn;
+    private ExtendedWebElement priceFilterBtn
+            ;
 
     public ProductFilters(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);

@@ -27,7 +27,7 @@ public class HomePage extends HomePageBase {
     }
 
     @Override
-    public HomePageBase goToPage() {
+    public HomePageBase     goToPage() {
         open();
         return this;
     }
