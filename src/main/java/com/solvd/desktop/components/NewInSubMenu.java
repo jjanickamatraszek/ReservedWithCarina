@@ -53,7 +53,7 @@ public class NewInSubMenu extends NewInSubMenuBase {
     }
 
     public NewInSubCatPageBase clickOnSubcategory(String title) {
-        subcategory.format(title.toUpperCase()).click();
+        subcategory.format(title).click();
         return new NewInSubCatPage(driver);
     }
 }

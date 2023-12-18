@@ -16,17 +16,18 @@ public class ProductPage extends ProductPageBase {
     @FindBy(css = "div.basic-price")
     private ExtendedWebElement priceLabel;
 
-    @FindBy(css = "[data-selen='gallery']>[class*='MainPhoto'] .bWWRbz")
+    @FindBy(css = "div[data-testid='gallery'] img")
     private ExtendedWebElement mainImg;
 
     @FindAll({@FindBy(xpath = ".//label[@data-selen='description']"), @FindBy(css = "div[data-testid='description']")})
     private ExtendedWebElement descriptionLabel;
 
     @FindAll({@FindBy(xpath = ".//label[@data-selen='description']/following-sibling::div//div[contains(@class,'content')]"),
-            @FindBy(css = "div[data-testid ='description']+div div[class^='content_description]'")})
+            @FindBy(css = "div[data-testid ='description']+div div[class^='content-description']")})
     private ExtendedWebElement descriptionContent;
 
-    @FindBy(xpath = ".//label[@data-selen='composition']")
+    @FindAll({@FindBy(xpath = ".//label[@data-selen='composition']"),
+    @FindBy(css = "div[data-testid='composition']")})
     private ExtendedWebElement materialAndCareLabel;
 
     @FindAll({@FindBy(xpath = ".//label[@data-selen='composition']/following-sibling::div//div[contains(@class,'content')]"),
