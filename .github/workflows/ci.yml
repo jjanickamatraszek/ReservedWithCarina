@@ -27,6 +27,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - uses: browser-actions/setup-chrome@latest
+    - name: Start selenoid
+      uses: Xotabu4/selenoid-github-action@v2
+#      with:
+#        selenoid-start-arguments: |
+#          --args "-timeout 60s"
+#          --browsers 'chrome' --last-versions 1
     - name: Build with Maven
       run: mvn clean test
