@@ -36,8 +36,8 @@ jobs:
       - name: Code style check
         uses: dbelyaev/action-checkstyle@master
         with:
-          #        github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          checkstyle_config: sun_checks.xml
+          level: warning
       - name: Build with Maven
         run: mvn clean test
